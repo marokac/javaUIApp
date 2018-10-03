@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 public class couponCulculator extends culculater {
 
     //Declaring Objects
+    
     //frame
     Frame f = new Frame();
 
@@ -51,7 +52,7 @@ public class couponCulculator extends culculater {
         f.add(t4);
         f.add(t5);
         //initialise result to 0
-        t5.setText(0 + "");
+        t5.setText("R"+0.00 + "");
 
         //add button to the frame
         f.add(b1);
@@ -103,11 +104,16 @@ public class couponCulculator extends culculater {
                 Double couRate = Double.parseDouble(t2.getText());
                 Double period = Double.parseDouble(t3.getText());
                 Double interestRate = Double.parseDouble(t4.getText());
-                t5.setText(calculateBondRate(faceValue, couRate, period, interestRate) + "");
+                
+                //update the value of the result
+                t5.setText("R"+calculateBondRate(faceValue, couRate, period, interestRate) + "");
+                
             } catch (NumberFormatException e) {
+                //open error dilog non numeric values entered
                 openDilog("Only numeric values allowd");
             }
         } else {
+            //open error dilog if fields are empty
             openDilog(validate());
         }
 
@@ -129,7 +135,7 @@ public class couponCulculator extends culculater {
     private String validate() {
         String Massege = "";
         if ("".equals(t1.getText()) || "".equals(t2.getText()) || "".equals(t3.getText()) || "".equals(t4.getText())) {
-            Massege = "Field cannot be empty";
+            Massege = "Fields cannot be empty";
         }
 
         return Massege;
